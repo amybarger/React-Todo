@@ -38,13 +38,13 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      item: item
+      itemList: item
     };
   }
     toggleItem = itemId => {
       console.log("Toggleitem reveal ID", itemId);
       this.setState({
-        item: this.state.item.map(
+        itemList: this.state.itemList.map(
           item => {
             if (itemId === item.id) {
               return {
@@ -64,7 +64,7 @@ class App extends React.Component {
         completed: false
       };
       this.setState({
-        item: [...this.state.item, newItem]
+        itemList: [...this.state.itemList, newItem]
       });
     };
 
@@ -77,7 +77,7 @@ class App extends React.Component {
         </div>
         <TodoList 
           toggleItem={this.toggleItem}
-          task={this.state.item}
+          task={this.state.itemList}
           clearCompleted={this.clearCompleted}
         />
       </div>
