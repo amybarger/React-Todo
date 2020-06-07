@@ -52,7 +52,19 @@ class App extends React.Component {
             return item;
         })
       });
-    }
+    };
+
+    addItem = (e, item) => {
+      e.preventDefault();
+      const newItem = {
+        name: item,
+        id: Date.now(),
+        purchased: false
+      };
+      this.setState({
+        toDoItems: [...this.state.toDoItems, newItem]
+      });
+    };
 
   render() {
     return (
