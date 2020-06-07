@@ -9,13 +9,13 @@ class TodoForm extends React.Component {
     };
 
     handleChanges = e => {
-        console.log(e.target.value);
-        this.setState({ item: e.target.value });
+        this.setState({ [e.target.name] : e.target.value });
     };
 
     submitItem = e => {
         e.preventDefault();
         this.props.addItem(e, this.state.item);
+        this.setState({ item: "" })
     };
 
     render() {
@@ -28,6 +28,9 @@ class TodoForm extends React.Component {
                 onChange={this.handleChanges}
                 />
                 <button>Add</button>
+                <button className='clear-button' onClick={this.clearItems}>
+                Clear Items
+                </button>
             </form>
         )
     }

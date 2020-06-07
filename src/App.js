@@ -1,33 +1,35 @@
 import React from 'react';
+import TodoList from './components/TodoList'
+import TodoForm from "./components/TodoForm"
 
-const toDoItems = [
+const item = [
   {
        task: `Go to the #BLM protests`,
-       id: Date.now(),
+       id: 12354637,
        completed: false
   },
   {
        task: `Donate to one or more of the following: Justice for Breonna Taylor, The Bail Project, My Block My Hood My City, Black Table Arts, Fair Fight,`,
-       id: Date.now(),
+       id: 47573892,
        completed: false
   },
   {
        task: `Sign petitions`,
-       id: Date.now(),
+       id: 363464738,
        completed: false
   },
   {
        task: `Discontinue purchases from racist businesses and support anti-racist businesses`,
-       id: Date.now(),
+       id: 2636573726,
        completed: false
   },
   {
        task: `Civil discussions with multiple views and backgrounds for the common goal of unity`,
-       id: Date.now(),
+       id: 4657382827,
        completed: false
   }
 
-];
+]
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -36,17 +38,17 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      toDoItems
+      item: item
     };
   }
     toggleItem = itemId => {
-      console.log(itemId);
-      this.state({
-        toDoItems: this.state.toDoItems.map(
+      console.log("Toggleitem reveal ID", itemId);
+      this.setState({
+        item: this.state.item.map(
           item => {
             if (itemId === item.id) {
               return {
-                ...item, purchased: !item.purchased
+                ...item, completed: !item.completed
               };
             }
             return item;
@@ -59,10 +61,10 @@ class App extends React.Component {
       const newItem = {
         name: item,
         id: Date.now(),
-        purchased: false
+        completed: false
       };
       this.setState({
-        toDoItems: [...this.state.toDoItems, newItem]
+        item: [...this.state.item, newItem]
       });
     };
 
@@ -75,7 +77,8 @@ class App extends React.Component {
         </div>
         <TodoList 
           toggleItem={this.toggleItem}
-          toDoItems={this.state.toDoItems}
+          task={this.state.item}
+          clearCompleted={this.clearCompleted}
         />
       </div>
     );
