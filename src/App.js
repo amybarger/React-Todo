@@ -17,7 +17,7 @@ const toDoItems = [
        completed: false
   },
   {
-       task: `Discontinue purchases from anti-racist businesses`,
+       task: `Discontinue purchases from racist businesses and support anti-racist businesses`,
        id: Date.now(),
        completed: false
   },
